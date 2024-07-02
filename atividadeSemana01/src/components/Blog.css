@@ -1,0 +1,12 @@
+/* cards com cores entre tons de branco e cinza */
+
+.blog {
+    background-color: #000000;
+    border: 2px solid #928800;
+    border-radius: 10px;
+    width: 50vw;
+}
+
+.blog h1 {
+    color: #ffffff;
+}

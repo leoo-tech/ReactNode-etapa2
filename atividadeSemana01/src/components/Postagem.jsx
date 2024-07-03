@@ -1,11 +1,11 @@
-import './Postagem.css';
-function Postagem() {
+import "./Postagem.css";
+function Postagem(props) {
   return (
     <div className="postagem">
-      <h2>Titulo da Postagem</h2>
-      <p className="descricao">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, nostrum.
-      </p>
-      <img src="https://picsum.photos/200/300" alt="Imagem aleatória" />
+      <h3 className="postagem-titulo">{props.titulo}</h3>
+      <img src={props.linkImagem} alt={props.legenda} />
+      <p>{props.desc}</p>
+      <small>Escrito por: {props.nomeAutor}</small>
     </div>
   );
 }

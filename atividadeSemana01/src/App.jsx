@@ -1,15 +1,16 @@
-import Blog from './components/Blog';
-import Footer from './components/Footer';
-import NavBar from './components/NavBar';
+import Blog from "./components/Blog";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
-
   return (
-    <main>
-      <NavBar />
-      <Blog />
-      <Footer />
-    </main>
+    <>
+      <main>
+        <NavBar logado={true} nomeUser="Batista" />
+        <Blog />
+        <Footer />
+      </main>
+    </>
   );
 }
 

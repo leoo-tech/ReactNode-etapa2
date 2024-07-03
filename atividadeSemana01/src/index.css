@@ -6,23 +6,22 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  background-color: #3a3a3a;
+  overflow-x: hidden;
+  width: 100%;
+  background-color: #dbdbdb;
   font-family: monospace;
 }
 
 img {
   border-radius: 8px;
   margin: 10px auto;
-  display: block;
 }
 
 h1 {
   text-align: center;
 }
 
-h2 {
+h2, h3 {
   text-align: center;
   background-color: black;
   color: goldenrod;

@@ -1,0 +1,24 @@
+.mensagem-corpo {
+    background-color: #b2b2b2;
+    border-radius: 5px;
+    border: 2px solid #928800;
+    flex-direction: column;
+    display: flex;
+}
+
+.mensagem-titulo {
+    background-color: #c7c7c7;
+    color: #ae7a00;
+    font-size: 1em;
+    text-align: center;
+    border: 2px dotted #928800;
+}
+
+.paragrafo {
+    color: #000000;
+    text-align: center;
+}
+
+.mensagem-corpo img {
+    border-radius: 10px;
+}

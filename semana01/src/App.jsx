@@ -6,15 +6,16 @@
 // Componente principal da aplicação
 import Titulo from "./components/Titulo";
 import Mensagem from "./components/Mensagem";
+import Footer from "./components/Footer";
+
 function App() {
 
     return (
-       <main>
-        <Titulo />
-        <Mensagem />
-        <Mensagem />
-        <Mensagem />
-       </main>
+        <main>
+            <Titulo />
+            <Mensagem />
+            <Footer />
+        </main>
     );
 }
 

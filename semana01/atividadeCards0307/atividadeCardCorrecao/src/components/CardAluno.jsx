@@ -6,7 +6,7 @@ function CardAluno(props) {
 
     return (
         <article className="card-aluno">
-            <h4>{props.nome}</h4>
+            <h4>Nome: {props.nome}</h4>
             <p>Série: {props.serie}</p>
             <strong className={classe}>Média: {props.media}</strong>
             <p className={classe}>{props.media >= 7 ? "Aprovado!" : "Reprovado!"}</p>

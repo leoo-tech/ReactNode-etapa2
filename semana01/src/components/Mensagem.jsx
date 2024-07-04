@@ -1,15 +1,17 @@
 import "./Mensagem.css";
+
+const textoTitulo = "Aprendendo React";
+const nomeAutor = "Arda Guler";
+const linkImagem = "https://cdn1.iconfinder.com/data/icons/programing-development-8/24/react_logo-512.png";
+
 function Mensagem() {
-    const textoTitulo = "KitKat supremacy"
-  const nomeAutor = "Fabio Carille";
-  const linkImagem = "https://picsum.photos/200/300";
-    return (
-        <section className="mensagem-corpo">
-            <h2 className="mensagem-titulo">{textoTitulo.toUpperCase()}</h2>
-            <img src={linkImagem} alt="imagem da mensagem" />
-            <p className="paragrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, quis.</p>
-            <small>criado por: {nomeAutor}</small>
-        </section>
-)}
+  return (
+    <section className="mensagem-corpo">
+      <h2>{textoTitulo}</h2>
+      <p>Por: {nomeAutor}</p>
+      <img src={linkImagem} alt={textoTitulo} width={100} />
+    </section>
+  )
+}
 
 export default Mensagem;

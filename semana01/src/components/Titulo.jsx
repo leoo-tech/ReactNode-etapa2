@@ -1,6 +1,6 @@
 function Titulo() {
   return( 
-    <h1>Frases do dia</h1>
+    <h1>Exercicios do dia</h1>
     );
 
 }

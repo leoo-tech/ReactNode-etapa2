@@ -12,6 +12,14 @@ const produtos = [
     { cod: 4, nome: "Batata chips", quantidade: 20, precoUnitario: 4 }
 ];
 
+
+const alunos = [
+    { mat: 1, nome: "José", serie: "7º", media: 9.0 },
+    { mat: 2, nome: "Igor", serie: "8º", media: 7.0 },
+    { mat: 3, nome: "Gabriel", serie: "9º", media: 10 },
+    { mat: 4, nome: "Victor", serie: "8º", media: 7.5 }
+];
+
 // Gerar componentes/elementos a partir de dados (array)
 
 function Listagem() {
@@ -33,7 +41,9 @@ function Listagem() {
         );
     });
 
-    // const cardsAluno = <CardAluno nome={aluno.nome} serie={aluno.serie} media={aluno.media} />;
+    const cardsAluno = alunos.map((aluno) => {
+        return <CardAluno key={aluno.mat} nome={aluno.nome} serie={aluno.serie} media={aluno.media} />
+    });
 
     return (
         <>
@@ -43,6 +53,8 @@ function Listagem() {
             <h2>Lista de Produtos</h2>
             <section>{cardsProduto}</section>
             <hr />
+            <h2>Lista de Alunos</h2>
+            <section>{cardsAluno}</section>
         </>
     );
 }

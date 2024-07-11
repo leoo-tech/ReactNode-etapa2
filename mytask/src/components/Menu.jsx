@@ -16,6 +16,7 @@ export default function Menu() {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/login">Login</Nav.Link>
               <Nav.Link as={Link} to="/cadastro">Cadastro</Nav.Link>
+              <Nav.Link as={Link} to="/novatarefa">Nova tarefa</Nav.Link>
               <Nav.Link as={Link} to="/ajuda">Ajuda</Nav.Link>
             </Nav>
           </Navbar.Collapse>

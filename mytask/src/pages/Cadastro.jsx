@@ -2,7 +2,11 @@ import { Button } from "react-bootstrap"; // importando o componente Button do r
 import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
 
 export default function Cadastro() {
-  const { register, handleSubmit } = useForm(); // desestruturando o objeto retornado pelo hook useForm
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm(); // desestruturando o objeto retornado pelo hook useForm
 
   function cadastrar(data) {
     console.log("Formulário submetido");
@@ -22,6 +26,7 @@ export default function Cadastro() {
             className="form-control"
             {...register("nome", { required: true })}
           />
+          {errors.nome && <small className="invalid">Nome inválido!</small>}
         </div>
         <div>
           <label htmlFor="email">Email</label>
@@ -31,6 +36,7 @@ export default function Cadastro() {
             className="form-control"
             {...register("email", { required: true })}
           />
+          {errors.email && <small className="invalid">email inválido</small>}
         </div>
         <div>
           <label htmlFor="senha">Senha</label>
@@ -38,16 +44,16 @@ export default function Cadastro() {
             type="password"
             id="senha"
             className="form-control"
-            {...register("senha", { required: true })}
+            {...register("senha", { required: true, minLength: 6 })}
           />
-        </div>
-        <div>
-          <label htmlFor="confirmar-senha">Confirmar senha</label>
-          <input
-            type="password"
-            id="confirmar-senha"
-            className="form-control"
-          />
+          {errors.senha && errors.senha.type === "required" && (
+            <small className="invalid">Senha obrigatória!</small>
+          )}
+          {errors.senha && errors.senha.type === "minLength" && (
+            <small className="invalid">
+              A senha deve ter no mínimo 6 caracteres!
+            </small>
+          )}
         </div>
 
         <div className="mt-2">
@@ -58,7 +64,6 @@ export default function Cadastro() {
             Cadastrar com o Google
           </Button>
         </div>
-        
       </form>
     </main>
   );

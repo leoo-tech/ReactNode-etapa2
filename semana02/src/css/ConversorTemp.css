@@ -1,0 +1,48 @@
+/* visual simples, bordas arredondadas e uma vizualização central de todo o aplicativo */
+
+.conversor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.conversor h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.conversor input {
+    width: 10%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+}
+
+.conversor button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #333;
+    cursor: pointer;
+}
+
+.conversor button:hover {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.conversor .result {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}

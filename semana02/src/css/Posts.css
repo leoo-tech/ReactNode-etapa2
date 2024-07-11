@@ -1,0 +1,81 @@
+/* estilização que lembra os posts do Facebook e botoes de curtida, descurtida e transições para uma vizualização mais nitida quando curtida */
+
+.posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.posts h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.posts p {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.posts button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #333;
+  cursor: pointer;
+}
+
+.posts button:hover {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.posts .like {
+  background-color: green;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.posts .dislike {
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.posts .like:hover {
+  color: #ffffff;
+  background-color: rgb(16, 241, 16);
+}
+
+.posts .dislike:hover {
+  color: #ffffff;
+  background-color: rgb(98, 0, 0);
+}
+
+.posts .like:active {
+  color: #ffffff;
+  background-color: rgb(135, 255, 135);
+}
+
+.posts .dislike:active {
+  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+}
+
+hr {
+  width: 100%;
+  border: 2px solid #333;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

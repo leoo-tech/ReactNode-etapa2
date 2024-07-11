@@ -1,0 +1,35 @@
+.imgSubtitle {
+    color: rgb(60, 60, 60);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 1; 
+    transition: all 0.5s ease;
+}
+
+.imgSubtitle:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.botoes button {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.botoes button:hover {
+    background: #e1e1e1;
+}

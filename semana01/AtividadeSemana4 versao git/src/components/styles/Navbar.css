@@ -1,0 +1,83 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A6CE39;
+    padding: 5px 30px;
+    font-size: 22px;
+}
+
+.logo-container {
+    flex-grow: 1;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-grow: 2;
+    position: relative;
+    right: 15%;
+    transition: right 0.3s ease;
+}
+
+.nav-links li {
+    margin-right: 10px;
+    padding: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+.nav-links a:hover {
+    color: #3a3a3a;
+}
+
+
+
+.navbar h3 {
+    color: #ffffff;
+    position: relative;
+    right: 15%;
+    transition: right 0.3s ease;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 1%;
+    transition: right 0.3s ease;
+}
+
+.logo {
+    width: 150px;
+}
+
+
+
+.input-nome {
+    padding: 10px;
+    /* Espaçamento interno */
+    border: 1px solid #ccc;
+    /* Borda */
+    border-radius: 5px;
+    /* Cantos arredondados */
+    margin-right: 10px;
+    /* Espaçamento à direita */
+    width: 200px;
+    /* Largura */
+    transition: box-shadow 0.3s ease;
+}
+
+.input-nome:focus {
+    outline: none;
+    box-shadow: 0 0 5px #3a3a3a;
+}
+
+.input-nome::placeholder {
+    color: #969696;
+}

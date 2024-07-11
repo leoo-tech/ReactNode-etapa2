@@ -1,0 +1,38 @@
+footer {
+    background-color: #A6CE39;
+    padding: 8px;
+    color: white;
+}
+
+.informacoesadicionais {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.descricao {
+  text-align: center;
+  width: 400px;
+}
+
+.copyRight {
+  text-align: center;
+  padding: 8px;
+}
+
+.redesSociais {
+  width: 20vh;
+  margin-top: 32px;
+  margin-right: 60px;
+  display: flex;
+}
+
+.redesSociais img {
+  width: 50px;
+}
+
+.logoFooter {
+  width: 200px;
+}

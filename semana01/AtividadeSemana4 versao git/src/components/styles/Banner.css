@@ -1,0 +1,23 @@
+.banner-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 60vh;  
+    width: 100%;
+    overflow: hidden;  
+    text-align: center; 
+}
+
+.imagem-banner {
+    width: 100%;   
+    height: auto;  
+}
+
+.banner-text {
+    margin-top: 20px; 
+    font-size: 2rem; 
+    color: #ffffff; 
+    background-color: #A6CE39;
+    padding: 15px;
+}

@@ -1,5 +1,8 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { addTarefa } from "../firebase/tarefas";
+import toast from "react-hot-toast";
+import { Link } from 'react-router-dom';
 
 export default function NovaTarefa() {
   const {
@@ -9,9 +12,15 @@ export default function NovaTarefa() {
   } = useForm();
 
   function salvarTarefa(data) {
-    alert("Tarefa salva. Verifique o console para mais detalhes.");
-    console.log("Tarefa salva");
-    console.log(data);
+
+    addTarefa(data).then(() => {
+      toast.success("Tarefa adicionada com sucesso!");
+      // redirecionar para a página de tarefas após adicionar a tarefa
+    })
+      .catch((error) => {
+        toast.error("Erro ao adicionar tarefa");
+        console.error(error);
+      });
   }
 
   return (

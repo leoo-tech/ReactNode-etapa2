@@ -31,6 +31,7 @@ export default function App() {
           <Route path='/tarefas/adicionar' element={<NovaTarefa />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <hr />
         <Footer />
       </BrowserRouter>
       <Toaster position='bottom-right' />

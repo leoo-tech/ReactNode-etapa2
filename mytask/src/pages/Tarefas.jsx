@@ -44,12 +44,12 @@ function Tarefas() {
                                 <div className="mb-2">
                                     {tarefa.completa ? <Badge bg='success'>Tarefa concluída</Badge> : <Badge bg='warning'>Tarefa pendente</Badge>
                                     }
-                                    <Badge bg={categoriaCores[tarefa.categoria] || 'secondary'}>
+                                    <Badge className="ms-2" bg={categoriaCores[tarefa.categoria] || 'secondary'}>
                                         {tarefa.categoria}
                                     </Badge>
                                 </div>
-                                <div className="ms-2 g-3">
-                                    <Button variant='dark'>Editar</Button>
+                                <div className="ms-2">
+                                    <Button className="me-2" variant='dark'>Editar</Button>
                                     <Button variant='danger'>Excluir</Button>
                                 </div>
                             </Card.Body>

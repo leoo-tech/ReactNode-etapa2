@@ -57,10 +57,10 @@ export default function Cadastro() {
         </div>
 
         <div className="mt-2">
-          <Button variant="outline-dark" className="mt-1 w-100" type="submit">
+          <Button variant="outline-dark" type="submit">
             Cadastrar
           </Button>
-          <Button variant="outline-danger" className="mt-1 w-100" type="button">
+          <Button variant="outline-danger" type="button">
             Cadastrar com o Google
           </Button>
         </div>

@@ -8,49 +8,36 @@ export default function Home() {
   return (
     <main>
       <Container>
-        <h1>Serviços Gerais Terceirizados</h1>
-        <Tabs defaultActiveKey="servicos" id="uncontrolled-tab-example" className="mb-3" justify>
-          <Tab eventKey="servicos" title="Serviços">
+        <h1>My To-do!</h1>
+        <Tabs defaultActiveKey="gerenciador" id="uncontrolled-tab-example" className="mb-3" justify>
+          <Tab eventKey="gerenciador" title="Gerenciador">
             <Card style={{ width: '20rem', margin: 'auto' }} border="dark">
               <Card.Img style={{ width: '10rem', margin: 'auto' }} className="mt-4" variant="top" src="https://cdn.pixabay.com/photo/2017/09/29/00/30/checkmark-icon-2797531_640.png" alt='Logo' />
 
-              <Card.Header as='h5'>Novos serviços adicionados!</Card.Header>
+              <Card.Header as='h5'>Novos recursos!</Card.Header>
               <Card.Body>
-                <Card.Title>Serviços</Card.Title>
+                <Card.Title>gerenciamento de tarefas</Card.Title>
                 <Card.Text style={{ textAlign: 'justify' }}>
-                  Oferecemos uma ampla gama de serviços terceirizados, incluindo limpeza, segurança, portaria, jardinagem, entre outros.
+                  Organize suas tarefas de forma simples e prática, com a possibilidade de adicionar, editar e excluir tarefas.
                 </Card.Text>
-                <Button variant="primary">Saiba mais</Button>
+                <Button as={Link} to='/tarefas/adicionar' variant="primary">Saiba mais</Button>
               </Card.Body>
 
             </Card>
           </Tab>
-          <Tab eventKey="clientes" title="Clientes">
+          <Tab eventKey="publico" title="Publico">
             <Card border="dark" style={{ width: '20rem', margin: 'auto' }}>
               <Card.Img style={{ width: '10rem', margin: 'auto' }} className="mt-4" variant="top" src="https://cdn.pixabay.com/photo/2017/09/29/00/30/checkmark-icon-2797531_640.png" alt='Logo' />
               <Card.Body>
-                <Card.Title>Clientes</Card.Title>
+                <Card.Title>Público Alvo</Card.Title>
                 <Card.Text style={{ textAlign: 'justify' }} >
-                  Atendemos empresas de diversos segmentos, como indústrias, comércios, condomínios, escolas, hospitais, entre outros.
+                  Para quem este gerenciador é recomendado? Para aqueles que desejam organizar suas tarefas diárias de forma prática e eficiente.
                 </Card.Text>
-                <Button variant="primary">Saiba mais</Button>
-              </Card.Body>
-            </Card>
-          </Tab>
-          <Tab eventKey="contato" title="Contato">
-            <Card border="dark" style={{ width: '20rem', margin: 'auto' }}>
-              <Card.Img style={{ width: '10rem', margin: 'auto' }} className="mt-4" variant="top" src="https://cdn.pixabay.com/photo/2017/09/29/00/30/checkmark-icon-2797531_640.png" alt='Logo' />
-              <Card.Body>
-                <Card.Title>Contato</Card.Title>
-                <Card.Text style={{ textAlign: 'justify' }}>
-                  Entre em contato conosco para solicitar um orçamento ou esclarecer dúvidas sobre nossos serviços.
-                </Card.Text>
-                <Button variant="primary">Saiba mais</Button>
+                <Button as={Link} to='/ajuda' variant="primary">Saiba mais</Button>
               </Card.Body>
             </Card>
           </Tab>
         </Tabs>
-        <Button className="mt-5" variant="outline-dark" as={Link} to='/bla'>Testando a página de erro</Button>
       </Container>
     </main>
   );

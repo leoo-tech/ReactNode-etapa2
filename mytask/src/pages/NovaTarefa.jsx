@@ -32,7 +32,7 @@ export default function NovaTarefa() {
               maxLength: 20,
             })}
           />
-          {errors.titulo && <small className="invalid">Não!</small>}
+          {errors.titulo && <small className="invalid">minimo de 5 caracteres!</small>}
         </div>
 
         <div>
@@ -49,7 +49,7 @@ export default function NovaTarefa() {
             })}
           ></textarea>
           {errors.descricao && (
-            <small className="invalid">Não!</small>
+            <small className="invalid">A descrição deve ter entre 10 e 200 caracteres</small>
           )}
         </div>
 

@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Privacidade from './pages/Privacidade';
 import NovaTarefa from './pages/NovaTarefa';
+import Tarefas from './pages/Tarefas';
+import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound';
 
 // browserrouter -> roteamento de páginas
@@ -25,11 +27,13 @@ export default function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/ajuda" element={<Ajuda />} />
           <Route path='/privacidade' element={<Privacidade />} />
-          <Route path='/novatarefa' element={<NovaTarefa />} />
+          <Route path="/tarefas" element={<Tarefas />} />
+          <Route path='/tarefas/adicionar' element={<NovaTarefa />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
+      <Toaster position='bottom-right' />
     </main>
   );
 }

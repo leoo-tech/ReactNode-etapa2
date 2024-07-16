@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { addTarefa } from "../firebase/tarefas";
 import toast from "react-hot-toast";
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function NovaTarefa() {
   const {
@@ -11,11 +11,14 @@ export default function NovaTarefa() {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   function salvarTarefa(data) {
 
     addTarefa(data).then(() => {
       toast.success("Tarefa adicionada com sucesso!");
       // redirecionar para a página de tarefas após adicionar a tarefa
+      navigate("/tarefas");
     })
       .catch((error) => {
         toast.error("Erro ao adicionar tarefa");
@@ -68,7 +71,7 @@ export default function NovaTarefa() {
             type="date"
             id="dataConclusao"
             className="form-control"
-            {...register("data", { required: true })}
+            {...register("dataConclusao", { required: true })}
           />
         </div>
 
@@ -90,11 +93,11 @@ export default function NovaTarefa() {
         <div className="form-check">
           <input
             type="checkbox"
-            id="concluida"
+            id="concluido"
             className="form-check-input"
-            {...register("concluida")}
+            {...register("concluido")}
           />
-          <label htmlFor="concluida" className="form-check-label">
+          <label htmlFor="concluido" className="form-check-label">
             Concluída?
           </label>
         </div>

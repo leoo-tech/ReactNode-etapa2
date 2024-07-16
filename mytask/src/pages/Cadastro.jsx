@@ -1,16 +1,35 @@
 import { Button } from "react-bootstrap"; // importando o componente Button do react-bootstrap
 import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
+import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast"; // importando o toast do react-hot-toast
 
 export default function Cadastro() {
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(); // desestruturando o objeto retornado pelo hook useForm
 
-  function cadastrar(data) {
-    console.log("Formulário submetido");
-    console.log(data);
+  function cadastrar({ nome, email, senha }) {
+    cadastrarUsuario(nome, email, senha)
+      .then(() => {
+        toast.success(`Bem-vindo, ${nome}!`);
+        navigate("/tarefas");
+      })
+      .catch((error) => {
+        toast.error("Email e/ou Senha incorreta!", error, { duration: 2000 });
+      });
+  }
+
+  function handleEntrarGoogle({}) {
+    entrarGoogle().then(() => {
+      toast.success("Bem-vindo!");
+      navigate("/tarefas");
+    })
   }
 
   return (
@@ -57,10 +76,15 @@ export default function Cadastro() {
         </div>
 
         <div className="mt-2">
-          <Button variant="outline-dark" type="submit">
+          <Button
+            className="w-100"
+            variant="outline-dark" type="submit">
             Cadastrar
           </Button>
-          <Button variant="outline-danger" type="button">
+          <Button
+            className="mt-2 w-100"
+            onClick={handleEntrarGoogle}
+            variant="outline-danger" type="button">
             Cadastrar com o Google
           </Button>
         </div>

@@ -1,5 +1,9 @@
 import { Button } from "react-bootstrap"; // importando o componente Button do react-bootstrap
 import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { entrarGoogle } from "../firebase/auth";
+import { loginUsuario } from "../firebase/auth";
 
 function Login() {
   const {
@@ -8,11 +12,27 @@ function Login() {
     formState: { errors },
   } = useForm(); // desestruturando o objeto retornado pelo hook useForm
 
-  function entrar(data) {
-    // data é um objeto com os valores dos campos do formulário
-    console.log("Formulário submetido");
-    console.log(data);
+  const navigate = useNavigate();
+
+  function entrar({ email, senha }) {
+    loginUsuario(email, senha)
+      .then(() => {
+        toast.success("Bem-vindo!");
+        navigate("/tarefas");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Email e/ou Senha incorreta!", { duration: 2000 });
+      });
   }
+
+  function handleEntrarGoogle() {
+    entrarGoogle().then(() => {
+      toast.success("Bem-vindo!");
+      navigate("/tarefas");
+    })
+  }
+
 
   return (
     <main>
@@ -59,7 +79,7 @@ function Login() {
         <Button variant="outline-dark" className="mt-1 w-100" type="submit">
           Entrar
         </Button>
-        <Button variant="outline-danger" className="mt-1 w-100" type="button">
+        <Button variant="outline-danger" className="mt-1 w-100" onClick={handleEntrarGoogle} type="button">
           Entrar com o Google
         </Button>
       </form>

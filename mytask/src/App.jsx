@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Privacidade from './pages/Privacidade';
 import NovaTarefa from './pages/NovaTarefa';
 import Tarefas from './pages/Tarefas';
+import EditarTarefa from './pages/EditarTarefa';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound';
 
@@ -29,6 +30,7 @@ export default function App() {
           <Route path='/privacidade' element={<Privacidade />} />
           <Route path="/tarefas" element={<Tarefas />} />
           <Route path='/tarefas/adicionar' element={<NovaTarefa />} />
+          <Route path='/tarefas/editar/:id' element={<EditarTarefa />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <hr />

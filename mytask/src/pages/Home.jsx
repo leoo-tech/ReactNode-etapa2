@@ -20,7 +20,7 @@ export default function Home() {
                 <Card.Text style={{ textAlign: 'justify' }}>
                   Organize suas tarefas de forma simples e prática, com a possibilidade de adicionar, editar e excluir tarefas.
                 </Card.Text>
-                <Button as={Link} to='/tarefas/adicionar' variant="primary">Saiba mais</Button>
+                <Button as={Link} to='/login' variant="primary">Entrar</Button>
               </Card.Body>
 
             </Card>

@@ -1,4 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase/config';
 import Menu from './components/Menu';
 import Footer from './components/Rodape';
 import Ajuda from './pages/Ajuda';
@@ -9,7 +13,6 @@ import Privacidade from './pages/Privacidade';
 import NovaTarefa from './pages/NovaTarefa';
 import Tarefas from './pages/Tarefas';
 import EditarTarefa from './pages/EditarTarefa';
-import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound';
 
 // browserrouter -> roteamento de páginas
@@ -18,10 +21,24 @@ import NotFound from './pages/NotFound';
 // menu -> componente de menu
 
 export default function App() {
+  // o estado do usuario indica se ele esta logado ou não
+  // null = não sabemos se está logado
+  // objeto = está logado
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
+
+  useEffect(() => {
+    // monitorar o estado de autenticação do usuário
+    onAuthStateChanged(auth, (usuario) => {
+      // se o usuário estiver logado, o objeto usuário é retornado
+      // se o usuário não estiver logado, o valor é null
+      setUsuarioLogado(usuario);
+    });
+  }, []);
+
   return (
     <main className='conteudo'>
       <BrowserRouter>
-        <Menu />
+        <Menu usuario={usuarioLogado} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

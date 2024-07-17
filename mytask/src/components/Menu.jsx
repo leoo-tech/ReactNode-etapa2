@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../firebase/auth";
 
-export default function Menu() {
+export default function Menu({ usuario }) {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout().then(() => {
+      navigate("/login");
+    });
+  }
 
   return (
     <header>
@@ -25,11 +34,12 @@ export default function Menu() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)}>Home</Nav.Link>
-              <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>Login</Nav.Link>
-              <Nav.Link as={Link} to="/cadastro" onClick={() => setExpanded(false)}>Cadastro</Nav.Link>
-              <Nav.Link as={Link} to="/tarefas" onClick={() => setExpanded(false)}>Suas tarefas</Nav.Link>
+              {usuario && <Nav.Link as={Link} to="/tarefas" onClick={() => setExpanded(false)}>Tarefas</Nav.Link>}
+              {!usuario && <Nav.Link as={Link} to="/login" onClick={() => setExpanded(false)}>Login</Nav.Link>}
+              {!usuario && <Nav.Link as={Link} to="/cadastro" onClick={() => setExpanded(false)}>Cadastro</Nav.Link>}
               <Nav.Link as={Link} to="/ajuda" onClick={() => setExpanded(false)}>Ajuda</Nav.Link>
+              {usuario && <span className="text-light me-2">Olá, {usuario.displayName}</span>}
+              {usuario && <Button variant="outline-light" onClick={handleLogout}>Logout</Button>}
             </Nav>
           </Navbar.Collapse>
         </Container>

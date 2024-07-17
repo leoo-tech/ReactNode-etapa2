@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
+import { LoaderIcon, Toaster } from 'react-hot-toast';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import { UsuarioContext } from './contexts/UsuarioContext';
@@ -26,6 +26,7 @@ export default function App() {
   // null = não sabemos se está logado
   // objeto = está logado
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // monitorar o estado de autenticação do usuário
@@ -33,8 +34,15 @@ export default function App() {
       // se o usuário estiver logado, o objeto usuário é retornado
       // se o usuário não estiver logado, o valor é null
       setUsuarioLogado(usuario);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    // elemento exibindo enquanto o usuário está sendo carregado
+    // se null, nao exibe nada
+    return <LoaderIcon />;
+  }
 
   return (
     <main className='conteudo'>

@@ -5,7 +5,7 @@
 // - atualizar uma tarefa (Update)
 // - deletar uma tarefa (Delete)
 
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, where, query, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "./config";
 
 // Criar uma referência para a coleção no Firestore (essa linha é muito importante)
@@ -35,6 +35,21 @@ export async function getTarefas() {
     //Percorremos cada documento da coleção e inserimos no array de tarefas
     snapshot.forEach(doc => { //percorre esse snapshot, e para cada doc coloca nesse obj tarefas
         tarefas.push({ id: doc.id, ...doc.data() }); //usando spread, vai ter um novo array de objetos no formato que a gnt precisa
+    });
+
+    return tarefas;
+}
+
+// filtrar tarefas por usuario
+
+export async function getTarefasUsuario(idUsuario) {
+    // criando uma query para filtrar tarefas por idUsuario
+    const filtro = query(tarefasCol, where('idUsuario', '==', idUsuario));
+    const snapshot = await getDocs(filtro);
+    const tarefas = [];
+
+    snapshot.forEach(doc => {
+        tarefas.push({ id: doc.id, ...doc.data() });
     });
 
     return tarefas;

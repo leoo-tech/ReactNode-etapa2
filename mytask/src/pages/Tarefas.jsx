@@ -1,10 +1,11 @@
 import { Badge, Button, Card, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import { deleteTarefa, getTarefas } from "../firebase/tarefas";
+import { Link, Navigate } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
+import { deleteTarefa, getTarefasUsuario } from "../firebase/tarefas";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import toast from "react-hot-toast";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 function Tarefas() {
     // Exemplo de mapeamento de categorias para cores
@@ -18,12 +19,12 @@ function Tarefas() {
     };
 
     const [tarefas, setTarefas] = useState(null);
-
+    // recuperando a informação do usuario logado ou nao
+    const usuario = useContext(UsuarioContext);
     const navigate = useNavigate();
 
     function carregarDados() {
-        // then devolve a lista de tarefas da coleção
-        getTarefas().then((tarefas) => {
+        getTarefasUsuario(usuario.usuarioLogado.uid).then((tarefas) => {
             setTarefas(tarefas);
         });
     }
@@ -63,6 +64,12 @@ function Tarefas() {
     useEffect(() => {
         carregarDados();
     }, []);
+
+    // se o usuario for nulo, vai pra outra pagina
+    if (!usuario.usuarioLogado) {
+        return <Navigate to='/login' />;
+    }
+
 
     return (
         <main>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
+import { UsuarioContext } from './contexts/UsuarioContext';
 import Menu from './components/Menu';
 import Footer from './components/Rodape';
 import Ajuda from './pages/Ajuda';
@@ -37,23 +38,25 @@ export default function App() {
 
   return (
     <main className='conteudo'>
-      <BrowserRouter>
-        <Menu usuario={usuarioLogado} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/ajuda" element={<Ajuda />} />
-          <Route path='/privacidade' element={<Privacidade />} />
-          <Route path="/tarefas" element={<Tarefas />} />
-          <Route path='/tarefas/adicionar' element={<NovaTarefa />} />
-          <Route path='/tarefas/editar/:id' element={<EditarTarefa />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <hr />
-        <Footer />
-      </BrowserRouter>
-      <Toaster position='bottom-right' />
+      <UsuarioContext.Provider value={{ usuarioLogado }}>
+        <BrowserRouter>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/ajuda" element={<Ajuda />} />
+            <Route path='/privacidade' element={<Privacidade />} />
+            <Route path="/tarefas" element={<Tarefas />} />
+            <Route path='/tarefas/adicionar' element={<NovaTarefa />} />
+            <Route path='/tarefas/editar/:id' element={<EditarTarefa />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <hr />
+          <Footer />
+        </BrowserRouter>
+        <Toaster position='bottom-right' />
+      </UsuarioContext.Provider>
     </main>
   );
 }

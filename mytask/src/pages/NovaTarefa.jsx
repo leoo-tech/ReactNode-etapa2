@@ -2,7 +2,9 @@ import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { addTarefa } from "../firebase/tarefas";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 export default function NovaTarefa() {
   const {
@@ -11,9 +13,11 @@ export default function NovaTarefa() {
     formState: { errors },
   } = useForm();
 
+  const usuario = useContext(UsuarioContext);
   const navigate = useNavigate();
 
   function salvarTarefa(data) {
+    data.idUsuario = usuario.usuarioLogado.uid;
 
     addTarefa(data).then(() => {
       toast.success("Tarefa adicionada com sucesso!");
@@ -24,6 +28,11 @@ export default function NovaTarefa() {
         toast.error("Erro ao adicionar tarefa");
         console.error(error);
       });
+  }
+
+  // se o usuario for nulo, vai pra outra pagina
+  if (!usuario.usuarioLogado) {
+    return <Navigate to='/login' />;
   }
 
   return (
@@ -37,14 +46,20 @@ export default function NovaTarefa() {
           <input
             type="text"
             id="titulo"
-            className="form-control"
+            className={`form-control ${errors.titulo ? 'is-invalid' : ''}`}
             {...register("titulo", {
-              required: true,
-              minLength: 5,
-              maxLength: 20,
+              required: "O título é obrigatório",
+              minLength: {
+                value: 5,
+                message: "O título deve ter no mínimo 5 caracteres",
+              },
+              maxLength: {
+                value: 20,
+                message: "O título deve ter no máximo 20 caracteres",
+              },
             })}
           />
-          {errors.titulo && <small className="invalid">minimo de 5 caracteres!</small>}
+          {errors.titulo && <small className="invalid">{errors.titulo.message}</small>}
         </div>
 
         <div>

@@ -10,7 +10,7 @@
 // Caso contrário, a promessa foi rejeitada e o erro é lançado
 // O erro pode ser tratado com try/catch ou .catch
 
-import { createUserWithEmailAndPassword, signInWithPopup, signOut, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "./config";
 
 export async function cadastrarUsuario(nome, email, senha) {

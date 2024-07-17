@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTarefa, updateTarefa } from "../firebase/tarefas";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+import { Navigate } from "react-router-dom";
 
 function EditarTarefa() {
     // extrair o id na rota dinamica
@@ -15,7 +18,7 @@ function EditarTarefa() {
         formState: { errors },
         reset // função para resetar o formulário
     } = useForm();
-
+    const usuario = useContext(UsuarioContext);
     const navigate = useNavigate();
 
     function carregarDado() {
@@ -44,6 +47,11 @@ function EditarTarefa() {
     useEffect(() => {
         carregarDado();
     }, []);
+
+    // se o usuario for nulo, vai pra outra pagina
+    if (!usuario.usuarioLogado) {
+        return <Navigate to='/login' />;
+    }
 
     return (
         <main>

@@ -2,8 +2,7 @@ import { Button } from "react-bootstrap"; // importando o componente Button do r
 import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { entrarGoogle } from "../firebase/auth";
-import { loginUsuario } from "../firebase/auth";
+import { entrarGoogle, loginUsuario } from "../firebase/auth";
 
 function Login() {
   const {
@@ -14,16 +13,13 @@ function Login() {
 
   const navigate = useNavigate();
 
-  function entrar({ email, senha }) {
-    loginUsuario(email, senha)
-      .then(() => {
-        toast.success("Bem-vindo!");
-        navigate("/tarefas");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Email e/ou Senha incorreta!", { duration: 2000 });
-      });
+  function entrar(data) {
+    loginUsuario(data.email, data.senha).then(() => {
+      toast.success("Bem-vindo(a)!");
+      navigate("/tarefas");
+    }).catch(() => {
+      toast.error("Email e/ou senha incorreta!");
+    });
   }
 
   function handleEntrarGoogle() {
@@ -32,7 +28,6 @@ function Login() {
       navigate("/tarefas");
     })
   }
-
 
   return (
     <main>
